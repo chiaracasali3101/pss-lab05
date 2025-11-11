@@ -66,7 +66,7 @@ public class StrictBankAccount implements BankAccount {
         return this.id == id;
     }
 
-    private boolean isWithdrawAllowed(final double amount) { //non c'è
+    private boolean isWithdrawAllowed(final double amount) { //uguale
         return balance >= amount; 
     }
 }
