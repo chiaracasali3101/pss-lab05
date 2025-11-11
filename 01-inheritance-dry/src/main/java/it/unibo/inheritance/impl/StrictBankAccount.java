@@ -62,7 +62,7 @@ public class StrictBankAccount implements BankAccount {
         }
     }
 
-    private boolean checkUser(final int id) { //non c'è
+    private boolean checkUser(final int id) { //uguali
         return this.id == id;
     }
 

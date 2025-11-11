@@ -17,7 +17,7 @@ public class SimpleBankAccount implements BankAccount {
         this.transactions = 0;
     }
 
-    public void chargeManagementFees(final int id) {  //non c'è
+    public void chargeManagementFees(final int id) {  //diversi
         /*
          * Riduce il bilancio del conto di un ammontare pari alle spese di gestione
          */
@@ -81,7 +81,7 @@ public class SimpleBankAccount implements BankAccount {
         this.withdraw(id, amount + SimpleBankAccount.ATM_TRANSACTION_FEE);
     }
 
-    protected boolean checkUser(final int id) { //non c'è
+    protected boolean checkUser(final int id) { //uguali
         return this.id == id;
     }
 
