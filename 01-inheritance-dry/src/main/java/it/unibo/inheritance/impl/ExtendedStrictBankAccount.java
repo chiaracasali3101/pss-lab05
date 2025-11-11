@@ -4,23 +4,20 @@ public class ExtendedStrictBankAccount extends SimpleBankAccount{
 
     private static final double TRANSACTION_FEE = 0.1;
 
-    private int transactions;
-    private double balance;
-
     public ExtendedStrictBankAccount(int id, double balance) { //costruttore
         super(id, balance);
-        this.transactions = 0;
+        super.resetTransactions();
     }
 
     private void transactionOp(final int id, final double amount) { 
         if (checkUser(id)) {
-            this.balance += amount;
+            setBalance(getBalance() + amount);
             this.incrementTransactions();
         } 
     } 
 
     private boolean isWithdrawAllowed(final double amount) { 
-        return balance >= amount; 
+        return getBalance() >= amount; 
     }
 
     @Override 
@@ -32,10 +29,10 @@ public class ExtendedStrictBankAccount extends SimpleBankAccount{
 
     @Override
     public void chargeManagementFees(final int id) {
-        final double feeAmount = MANAGEMENT_FEE + transactions * TRANSACTION_FEE;
+        final double feeAmount = MANAGEMENT_FEE + super.getTransactionsCount() * TRANSACTION_FEE; //super.getTransactionsCount() perchè voglio il suo valore
         if (super.checkUser(id) && this.isWithdrawAllowed(feeAmount)) {
-            balance -= feeAmount;
-            transactions = 0;
+            setBalance(getBalance() -feeAmount);
+            super.resetTransactions();
         }
     }
 
