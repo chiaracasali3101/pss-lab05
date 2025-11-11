@@ -17,7 +17,7 @@ public class SimpleBankAccount implements BankAccount {
         this.transactions = 0;
     }
 
-    public void chargeManagementFees(final int id) {
+    public void chargeManagementFees(final int id) {  //non c'è
         /*
          * Riduce il bilancio del conto di un ammontare pari alle spese di gestione
          */
@@ -26,7 +26,7 @@ public class SimpleBankAccount implements BankAccount {
         }
     }
 
-    public void deposit(final int id, final double amount) {
+    public void deposit(final int id, final double amount) { //uguali
         /*
          * Incrementa il numero di transazioni e aggiunge amount al totale del
          * conto Nota: il deposito va a buon fine solo se l'id utente
@@ -35,7 +35,7 @@ public class SimpleBankAccount implements BankAccount {
         this.transactionOp(id, amount);
     }
 
-    public void depositFromATM(final int id, final double amount) {
+    public void depositFromATM(final int id, final double amount) { //uguali
         /*
          * Incrementa il numero di transazioni e aggiunge amount al totale del
          * conto detraendo le spese (costante ATM_TRANSACTION_FEE) relative
@@ -45,32 +45,32 @@ public class SimpleBankAccount implements BankAccount {
         this.deposit(id, amount - SimpleBankAccount.ATM_TRANSACTION_FEE);
     }
 
-    public double getBalance() {
+    public double getBalance() { //uguali
         return this.balance;
     }
 
-    protected void setBalance(final double balance) {
+    protected void setBalance(final double balance) { //non c'è
         this.balance = balance;
     }
 
-    public int getTransactionsCount() {
+    public int getTransactionsCount() { //uguali
         return this.transactions;
     }
 
-    public int getid() {
+    public int getid() { //non c'è
         return this.id;
     }
 
-    public void withdraw(final int id, final double amount) {
+    public void withdraw(final int id, final double amount) { //diversi
         /*
          * Incrementa il numero di transazioni e rimuove amount al totale del
          * conto. Note: - Il conto puo' andare in rosso (ammontare negativo) -
          * Il prelievo va a buon fine solo se l'id utente corrisponde
          */
-        this.transactionOp(id, -amount);
+        this.transactionOp(id, -amount); 
     }
 
-    public void withdrawFromATM(final int id, final double amount) {
+    public void withdrawFromATM(final int id, final double amount) { //uguali
         /*
          * Incrementa il numero di transazioni e rimuove amount + le spese
          * (costante ATM_TRANSACTION_FEE) relative all'uso dell'ATM (bancomat)
@@ -81,19 +81,19 @@ public class SimpleBankAccount implements BankAccount {
         this.withdraw(id, amount + SimpleBankAccount.ATM_TRANSACTION_FEE);
     }
 
-    protected boolean checkUser(final int id) {
+    protected boolean checkUser(final int id) { //non c'è
         return this.id == id;
     }
 
-    protected void incrementTransactions() {
+    protected void incrementTransactions() { //uguali
         this.transactions++;
     }
 
-    protected void resetTransactions() {
+    protected void resetTransactions() { //non c'è
         this.transactions = 0;
     }
 
-    private void transactionOp(final int id, final double amount) {
+    private void transactionOp(final int id, final double amount) { //uguali
         if (checkUser(id)) {
             this.balance += amount;
             this.incrementTransactions();

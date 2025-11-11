@@ -17,40 +17,40 @@ public class StrictBankAccount implements BankAccount {
         this.balance = balance;
     }
 
-    private void transactionOp(final int id, final double amount) {
+    private void transactionOp(final int id, final double amount) { //uguali
         if (checkUser(id)) {
             this.balance += amount;
             this.incrementTransactions();
-        }
+        } 
     }
 
-    public void deposit(final int id, final double amount) {
+    public void deposit(final int id, final double amount) { //uguali
         this.transactionOp(id, amount);
     }
 
-    public void withdraw(final int id, final double amount) {
+    public void withdraw(final int id, final double amount) { //diversi
         if (isWithdrawAllowed(amount)) {
             this.transactionOp(id, -amount);
         }
     }
 
-    public void depositFromATM(final int id, final double amount) {
+    public void depositFromATM(final int id, final double amount) { //uguali
         this.deposit(id, amount - StrictBankAccount.ATM_TRANSACTION_FEE);
     }
 
-    public void withdrawFromATM(final int id, final double amount) {
+    public void withdrawFromATM(final int id, final double amount) { //uguali
         this.withdraw(id, amount + StrictBankAccount.ATM_TRANSACTION_FEE);
     }
 
-    private void incrementTransactions() {
+    private void incrementTransactions() { //uguali
         transactions++;
     }
 
-    public double getBalance() {
+    public double getBalance() { //uguali
         return this.balance;
     }
 
-    public int getTransactionsCount() {
+    public int getTransactionsCount() { //uguali
         return transactions;
     }
 
@@ -62,11 +62,11 @@ public class StrictBankAccount implements BankAccount {
         }
     }
 
-    private boolean checkUser(final int id) {
+    private boolean checkUser(final int id) { //non c'è
         return this.id == id;
     }
 
-    private boolean isWithdrawAllowed(final double amount) {
-        return balance >= amount;
+    private boolean isWithdrawAllowed(final double amount) { //non c'è
+        return balance >= amount; 
     }
 }
